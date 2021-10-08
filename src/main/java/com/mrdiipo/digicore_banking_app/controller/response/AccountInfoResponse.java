@@ -5,12 +5,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 // Rest response object class for querying account information
-public class AccountInfoResponse {
+public final class AccountInfoResponse {
 
     private int responseCode;
     private boolean success;
     private String message;
     private Account account;
+
+    public AccountInfoResponse(final int responseCode,
+                               final boolean success,
+                               final String message,
+                               final Account account) {
+        this.responseCode = responseCode;
+        this.success = success;
+        this.message = message;
+        this.account = account;
+    }
 }

@@ -8,9 +8,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
 // Rest response object class for querying account statement
-public class AccountStatementResponse {
+public final class AccountStatementResponse {
 
     private Date transactionDate;
     private TransactionType  transactionType;
@@ -18,4 +17,15 @@ public class AccountStatementResponse {
     private BigDecimal amount;
     private BigDecimal accountBalance;
 
+    public AccountStatementResponse(final Date transactionDate,
+                                    final TransactionType transactionType,
+                                    final String narration,
+                                    final BigDecimal amount,
+                                    final BigDecimal accountBalance) {
+        this.transactionDate = transactionDate;
+        this.transactionType = transactionType;
+        this.narration = narration;
+        this.amount = amount;
+        this.accountBalance = accountBalance;
+    }
 }
