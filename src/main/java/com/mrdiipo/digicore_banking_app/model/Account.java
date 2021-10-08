@@ -10,15 +10,16 @@ public final class Account {
     private final String accountName;
     private final String accountNumber;
     private final String accountPassword;
-    private final BigDecimal balance;
+    private final BigDecimal accountBalance;
 
     private Account(String accountName,
                     String accountNumber,
-                    String accountPassword, BigDecimal balance) {
+                    String accountPassword, BigDecimal accountBalance) {
+
         this.accountName = accountName;
         this.accountNumber = accountNumber;
         this.accountPassword = accountPassword;
-        this.balance = balance;
+        this.accountBalance = accountBalance;
 
     }
 

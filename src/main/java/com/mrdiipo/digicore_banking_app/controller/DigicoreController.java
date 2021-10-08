@@ -7,6 +7,8 @@ import com.mrdiipo.digicore_banking_app.controller.request.WithdrawalRequest;
 import com.mrdiipo.digicore_banking_app.controller.response.*;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 // Class containing endpoints for the application
 public class DigicoreController {
@@ -14,7 +16,8 @@ public class DigicoreController {
     /*Get Mappings*/
 
     @GetMapping("/account_info/{accountNumber}")
-    public AccountInfoResponse getAccountInfo(@PathVariable String accountNumber){
+    public AccountInfoResponse getAccountInfo(@PathVariable String accountNumber, HttpServletResponse httpServletResponse){
+
         return null;
     }
 
