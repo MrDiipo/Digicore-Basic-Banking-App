@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-// Rest response object class for withdrawal transactions
+// REST response object class for withdrawal transactions
 public final class WithdrawalResponse {
 
     private final ResponseCodes responseCode;

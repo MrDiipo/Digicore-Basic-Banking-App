@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
-// Rest request object class for creating account
+// REST request object class for creating account
 public final class CreateAccountRequest {
 
     private final String accountName;

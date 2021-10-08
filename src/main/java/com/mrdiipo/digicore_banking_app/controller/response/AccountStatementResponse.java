@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-// Rest response object class for querying account statement
+// REST response object class for querying account statement
 public final class AccountStatementResponse {
 
     private final Date transactionDate;

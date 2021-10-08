@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-// Rest response object class for querying account information
+// REST response object class for querying account information
 public final class AccountInfoResponse {
 
     private final ResponseCodes responseCode;

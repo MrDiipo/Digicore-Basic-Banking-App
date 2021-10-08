@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
-// Rest request object class for withdrawal transactions
+// REST request object class for withdrawal transactions
 public final class WithdrawalRequest {
 
     private final String accountNumber;

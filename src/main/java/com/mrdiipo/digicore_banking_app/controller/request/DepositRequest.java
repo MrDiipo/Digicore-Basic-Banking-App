@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
-// Rest request object class for deposition transactions
+// REST request object class for deposition transactions
 public final class DepositRequest {
 
     private final String accountNumber;

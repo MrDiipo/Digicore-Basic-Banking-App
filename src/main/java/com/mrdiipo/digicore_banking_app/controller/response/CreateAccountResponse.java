@@ -6,8 +6,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-// REST response object class for deposition transactions
-public final class DepositResponse {
+// REST request object class for account creation
+public final class CreateAccountResponse {
 
     private final ResponseCodes responseCode;
     private final boolean success;
