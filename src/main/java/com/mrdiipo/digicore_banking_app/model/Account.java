@@ -7,16 +7,19 @@ import java.math.BigDecimal;
 @Data
 public final class Account {
 
-    private String accountName;
-    private String accountNumber;
-    private BigDecimal balance;
+    private final String accountName;
+    private final String accountNumber;
+    private final String accountPassword;
+    private final BigDecimal balance;
 
-    private Account(final String accountName,
-                    final String accountNumber,
-                    final BigDecimal balance) {
+    private Account(String accountName,
+                    String accountNumber,
+                    String accountPassword, BigDecimal balance) {
         this.accountName = accountName;
         this.accountNumber = accountNumber;
+        this.accountPassword = accountPassword;
         this.balance = balance;
+
     }
 
 }
