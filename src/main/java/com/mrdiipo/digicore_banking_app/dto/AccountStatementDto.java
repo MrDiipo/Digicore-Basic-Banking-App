@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 // A model class for transferring data between different layers of the application
-public class AccountStatementDto {
+public final class AccountStatementDto {
 
     private final Date transactionDate;
     private final TransactionType transactionType;

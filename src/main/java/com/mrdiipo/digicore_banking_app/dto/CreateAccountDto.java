@@ -8,15 +8,15 @@ import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
-// A model class for transferring withdrawal data between different layers of the application
-public final class WithdrawalDto {
+// A model class for transferring account creation data between different layers of the application
+public final class CreateAccountDto {
 
-    private final String accountNumber;
+    private final String accountName;
     private final String accountPassword;
-    private final BigDecimal withdrawnAmount;
+    private final BigDecimal initialDeposit;
 
     private final ResponseCodes responseCode;
-    private final boolean successful;
+    private final boolean success;
     private final String message;
 
 }
