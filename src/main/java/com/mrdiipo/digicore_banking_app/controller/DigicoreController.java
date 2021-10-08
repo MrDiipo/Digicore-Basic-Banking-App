@@ -5,6 +5,7 @@ import com.mrdiipo.digicore_banking_app.controller.request.DepositRequest;
 import com.mrdiipo.digicore_banking_app.controller.request.LoginRequest;
 import com.mrdiipo.digicore_banking_app.controller.request.WithdrawalRequest;
 import com.mrdiipo.digicore_banking_app.controller.response.*;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,36 +16,45 @@ public class DigicoreController {
 
     /*Get Mappings*/
 
-    @GetMapping("/account_info/{accountNumber}")
-    public AccountInfoResponse getAccountInfo(@PathVariable String accountNumber, HttpServletResponse httpServletResponse){
+    @GetMapping(path = "/account_info/{accountNumber}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public AccountInfoResponse getAccountInfo(@PathVariable ("accountNumber") String accountNumber, HttpServletResponse httpServletResponse){
 
         return null;
     }
 
-    @GetMapping("/account_statement/{accountNumber}")
-    public AccountStatementResponse getAccountStatement(@PathVariable String accountNumber){
+    @GetMapping(path = "/account_statement/{accountNumber}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public AccountStatementResponse getAccountStatement(@PathVariable ("accountNumber") String accountNumber){
         return null;
     }
 
     /*Post Mappings*/
 
-    @PostMapping("/deposit")
+    @PostMapping(path = "/deposit",
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public DepositResponse deposit(@RequestBody DepositRequest depositRequest){
         return null;
     }
 
 
-    @PostMapping("/withdrawal")
+    @PostMapping(path = "/withdrawal",
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public WithdrawalResponse withdrawal(@RequestBody WithdrawalRequest withdrawalRequest){
+
         return null;
     }
 
-    @PostMapping("/create_account")
+    @PostMapping(path = "/create_account",
+             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public CreateAccountResponse createAccount(@RequestBody CreateAccountRequest createAccountRequest){
         return null;
     }
 
-    @PostMapping("/login")
+    @PostMapping(path = "/login",
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public LoginResponse login(@RequestBody LoginRequest loginRequest){
         return null;
     }

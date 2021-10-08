@@ -12,6 +12,7 @@ public final class Account {
     private final String accountPassword;
     private final BigDecimal accountBalance;
 
+    // Access modifier for this constructor might change according to business requirements
     private Account(String accountName,
                     String accountNumber,
                     String accountPassword, BigDecimal accountBalance) {
