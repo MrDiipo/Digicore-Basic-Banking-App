@@ -9,10 +9,10 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountDto {
+public final class AccountDto {
 
     private String accountName;
     private String accountNumber;
-    private BigDecimal accountBalance;
+    private BigDecimal balance;
 
 }

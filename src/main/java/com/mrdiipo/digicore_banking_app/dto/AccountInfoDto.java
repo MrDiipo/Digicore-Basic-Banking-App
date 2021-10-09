@@ -15,6 +15,6 @@ public final class AccountInfoDto {
     private ResponseCodes responseCode;
     private boolean success;
     private String message;
-    private Account account;
+    private AccountDto accountDto;
 
 }

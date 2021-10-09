@@ -5,12 +5,15 @@ import com.mrdiipo.digicore_banking_app.controller.request.DepositRequest;
 import com.mrdiipo.digicore_banking_app.controller.request.LoginRequest;
 import com.mrdiipo.digicore_banking_app.controller.request.WithdrawalRequest;
 import com.mrdiipo.digicore_banking_app.controller.response.*;
+import com.mrdiipo.digicore_banking_app.dto.AccountDto;
 import com.mrdiipo.digicore_banking_app.dto.AccountInfoDto;
 import com.mrdiipo.digicore_banking_app.service.AccountInfoService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.security.auth.login.AccountNotFoundException;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
@@ -23,10 +26,15 @@ public class DigicoreController {
     /*Get Mappings*/
 
     @GetMapping(path = "/account_info/{accountNumber}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public AccountInfoResponse getAccountInfo(@PathVariable ("accountNumber") String accountNumber, HttpServletResponse httpServletResponse){
+    public AccountInfoResponse getAccountInfo(@PathVariable ("accountNumber") String accountNumber, String password, HttpServletResponse httpServletResponse) throws AccountNotFoundException {
 
-        AccountInfoDto accountInfoDto = new AccountInfoDto();
-        accountInfoDto.
+        AccountInfoResponse accountInfoResponse = new AccountInfoResponse(null, false, null, null);
+
+        AccountInfoDto accountInfoDto = accountInfoService.getAccountInfo(accountNumber, password);
+        BeanUtils.copyProperties(accountInfoDto, accountInfoResponse);
+
+
+
 
 
         return null;
