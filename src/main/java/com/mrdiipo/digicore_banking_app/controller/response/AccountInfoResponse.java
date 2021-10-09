@@ -9,12 +9,13 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 // REST response object class for querying account information
 public final class AccountInfoResponse {
 
-    private final ResponseCodes responseCode;
-    private final boolean success;
-    private final String message;
-    private final AccountDto accountDto;
+    private ResponseCodes responseCode;
+    private boolean success;
+    private  String message;
+    private AccountDto accountDto;
 
 }

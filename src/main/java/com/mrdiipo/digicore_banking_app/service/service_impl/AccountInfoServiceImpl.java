@@ -21,7 +21,7 @@ public class AccountInfoServiceImpl implements AccountInfoService {
 
         if (accountRepository.findByAccountNum(accountNumber) != null) throw new AccountNotFoundException(accountNumber);
 
-        if(!accountRepository.getAccountPassword(password).equals(password)) throw new IncorrectPasswordException);
+        if(!accountRepository.getAccountPassword(password).equals(password)) throw new IncorrectPasswordException(password);
 
         AccountDto accountDto = new AccountDto();
         accountDto.setAccountName(accountRepository.getAccountName());
