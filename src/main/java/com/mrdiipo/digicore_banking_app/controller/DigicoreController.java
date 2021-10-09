@@ -5,15 +5,13 @@ import com.mrdiipo.digicore_banking_app.controller.request.DepositRequest;
 import com.mrdiipo.digicore_banking_app.controller.request.LoginRequest;
 import com.mrdiipo.digicore_banking_app.controller.request.WithdrawalRequest;
 import com.mrdiipo.digicore_banking_app.controller.response.*;
-import com.mrdiipo.digicore_banking_app.dto.AccountDto;
-import com.mrdiipo.digicore_banking_app.dto.AccountInfoDto;
-import com.mrdiipo.digicore_banking_app.dto.AccountStatementDto;
-import com.mrdiipo.digicore_banking_app.dto.DepositDto;
+import com.mrdiipo.digicore_banking_app.dto.*;
 import com.mrdiipo.digicore_banking_app.enums.ResponseCodes;
 import com.mrdiipo.digicore_banking_app.exception.AccountNotFoundException;
 import com.mrdiipo.digicore_banking_app.service.AccountInfoService;
 import com.mrdiipo.digicore_banking_app.service.AccountStatementService;
 import com.mrdiipo.digicore_banking_app.service.DepositService;
+import com.mrdiipo.digicore_banking_app.service.WithdrawalService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -34,14 +32,21 @@ public class DigicoreController {
     @Autowired
     private DepositService depositService;
 
+    @Autowired
+    private WithdrawalService withdrawalService;
+
     /*Get Mappings*/
 
     @GetMapping(path = "/account_info/{accountNumber}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public AccountInfoResponse getAccountInfo(@PathVariable ("accountNumber") String accountNumber, String password) throws AccountNotFoundException {
 
-        AccountDto accountDto = accountInfoService.getAccountInfo(accountNumber, password);
+        AccountInfoResponse accountInfoResponse = new AccountInfoResponse();
 
-        return new AccountInfoResponse(ResponseCodes.SUCCESS, true, null, accountDto);
+        AccountInfoDto accountInfoDto = accountInfoService.getAccountInfo(accountNumber, password);
+
+        BeanUtils.copyProperties(accountInfoDto, accountInfoResponse);
+
+        return accountInfoResponse;
     }
 
     @GetMapping(path = "/account_statement/{accountNumber}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -79,8 +84,13 @@ public class DigicoreController {
     public WithdrawalResponse withdrawal(@RequestBody WithdrawalRequest withdrawalRequest){
 
         // TODO: Work on response codes on all endpoints
+        WithdrawalResponse withdrawalResponse = new WithdrawalResponse();
 
-        return null;
+        WithdrawalDto withdrawalDto = withdrawalService.withdraw(withdrawalRequest.getWithdrawnAmount(), withdrawalRequest.getAccountNumber());
+
+        BeanUtils.copyProperties(withdrawalDto, withdrawalResponse);
+
+        return withdrawalResponse;
     }
 
     @PostMapping(path = "/create_account",
