@@ -6,18 +6,13 @@ import com.mrdiipo.digicore_banking_app.controller.request.LoginRequest;
 import com.mrdiipo.digicore_banking_app.controller.request.WithdrawalRequest;
 import com.mrdiipo.digicore_banking_app.controller.response.*;
 import com.mrdiipo.digicore_banking_app.dto.*;
-import com.mrdiipo.digicore_banking_app.enums.ResponseCodes;
 import com.mrdiipo.digicore_banking_app.exception.AccountNotFoundException;
-import com.mrdiipo.digicore_banking_app.service.AccountInfoService;
-import com.mrdiipo.digicore_banking_app.service.AccountStatementService;
-import com.mrdiipo.digicore_banking_app.service.DepositService;
-import com.mrdiipo.digicore_banking_app.service.WithdrawalService;
+import com.mrdiipo.digicore_banking_app.service.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 // Class containing endpoints for the application
@@ -34,6 +29,9 @@ public class DigicoreController {
 
     @Autowired
     private WithdrawalService withdrawalService;
+
+    @Autowired
+    private CreateAccountService createAccountService;
 
     /*Get Mappings*/
 
@@ -97,7 +95,18 @@ public class DigicoreController {
              produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public CreateAccountResponse createAccount(@RequestBody CreateAccountRequest createAccountRequest){
-        return null;
+
+        CreateAccountDto createAccountDto = new CreateAccountDto();
+
+        BeanUtils.copyProperties(createAccountRequest, createAccountDto);
+
+        createAccountDto = createAccountService.createAccount(createAccountDto);
+
+        CreateAccountResponse createAccountResponse = new CreateAccountResponse();
+
+        BeanUtils.copyProperties(createAccountDto, createAccountResponse);
+
+        return createAccountResponse;
     }
 
     @PostMapping(path = "/login",

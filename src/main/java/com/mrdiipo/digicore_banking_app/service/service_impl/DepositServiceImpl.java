@@ -26,7 +26,9 @@ public final class DepositServiceImpl implements DepositService {
         if (accountRepository.findByAccountNum(accountNumber) != null) throw new AccountNotFoundException(accountNumber);
 
         var compareAmount = amount.compareTo(new BigDecimal("1_000_000.00"));
-        if (compareAmount == 1) throw new AccountDepositException(String.valueOf(amount));
+
+        if (compareAmount != 0 && compareAmount != -1)
+            throw new AccountDepositException(String.valueOf(amount));
 
         accountRepository.setAccountBalance(amount.add(accountRepository.getAccountBalance()));
 

@@ -5,6 +5,6 @@ import com.mrdiipo.digicore_banking_app.dto.CreateAccountDto;
 
 public interface CreateAccountService {
 
-    CreateAccountDto createAccount(CreateAccountRequest createAccountRequest);
+    CreateAccountDto createAccount(CreateAccountDto createAccountDto);
 
 }
