@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AccountInfoServiceImpl implements AccountInfoService {
+public final class AccountInfoServiceImpl implements AccountInfoService {
 
     @Autowired
     private AccountRepository accountRepository ;

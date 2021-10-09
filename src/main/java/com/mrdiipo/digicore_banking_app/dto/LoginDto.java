@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
+// A model class for transferring logging data between different layers of the application
 public final class LoginDto {
 
     private final String accountNumber;

@@ -11,6 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+// A model class for transferring deposit data between different layers of the application
 public final class DepositDto {
 
     private Date depositDate;
