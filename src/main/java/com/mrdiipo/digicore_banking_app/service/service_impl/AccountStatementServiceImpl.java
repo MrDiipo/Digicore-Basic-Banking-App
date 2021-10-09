@@ -8,7 +8,9 @@ import com.mrdiipo.digicore_banking_app.repository.AccountRepository;
 import com.mrdiipo.digicore_banking_app.repository.AccountTransactions;
 import com.mrdiipo.digicore_banking_app.service.AccountStatementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AccountStatementServiceImpl implements AccountStatementService {
 
     @Autowired
@@ -17,8 +19,11 @@ public class AccountStatementServiceImpl implements AccountStatementService {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Autowired
+    private TransactionType transactionType;
+
     @Override
-    public AccountStatementDto getAccountStatement(String accountNumber, String password, TransactionType transactionType) throws AccountNotFoundException, IncorrectPasswordException {
+    public AccountStatementDto getAccountStatement(String accountNumber, String password) throws AccountNotFoundException, IncorrectPasswordException {
 
         if (accountRepository.findByAccountNum(accountNumber) != null) throw new AccountNotFoundException(accountNumber);
 
@@ -27,12 +32,20 @@ public class AccountStatementServiceImpl implements AccountStatementService {
         AccountStatementDto accountStatementDto = new AccountStatementDto();
 
         if (transactionType == TransactionType.DEPOSIT){
-            accountStatementDto.setTransactionType(TransactionType.DEPOSIT);}
+            accountStatementDto.setTransactionType(TransactionType.DEPOSIT);
+            accountStatementDto.setTransactionDate(accountTransactions.depositTransaction().getDepositDate());
+            accountStatementDto.setNarration("");
+            accountStatementDto.setAccountBalance(accountTransactions.depositTransaction().getBalance());
+            accountStatementDto.setAmount(accountTransactions.depositTransaction().getAmount());
+        }
         else {
-            accountStatementDto.setTransactionType(TransactionType.WITHDRAWAL);};
-        accountStatementDto.setTransactionDate();
-        accountStatementDto.setNarration("");
-        accountStatementDto.setAmount();
-        return null;
+            accountStatementDto.setTransactionType(TransactionType.WITHDRAWAL);
+            accountStatementDto.setTransactionDate(accountTransactions.withdrawTransaction().getWithdrawDate());
+            accountStatementDto.setNarration("");
+            accountStatementDto.setAccountBalance(accountTransactions.withdrawTransaction().getBalance());
+            accountStatementDto.setAmount(accountTransactions.withdrawTransaction().getWithdrawnAmount());
+        }
+
+        return accountStatementDto;
     }
 }

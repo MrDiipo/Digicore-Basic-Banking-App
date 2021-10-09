@@ -10,11 +10,11 @@ import java.util.Date;
 // REST response object class for querying account statement
 public final class AccountStatementResponse {
 
-    private final Date transactionDate;
-    private final TransactionType  transactionType;
-    private final String narration;
-    private final BigDecimal amount;
-    private final BigDecimal accountBalance;
+    private  Date transactionDate;
+    private  TransactionType  transactionType;
+    private  String narration;
+    private  BigDecimal amount;
+    private  BigDecimal accountBalance;
 
 
 }

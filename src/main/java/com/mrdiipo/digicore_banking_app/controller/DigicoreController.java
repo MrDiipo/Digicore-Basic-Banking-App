@@ -7,9 +7,11 @@ import com.mrdiipo.digicore_banking_app.controller.request.WithdrawalRequest;
 import com.mrdiipo.digicore_banking_app.controller.response.*;
 import com.mrdiipo.digicore_banking_app.dto.AccountDto;
 import com.mrdiipo.digicore_banking_app.dto.AccountInfoDto;
+import com.mrdiipo.digicore_banking_app.dto.AccountStatementDto;
 import com.mrdiipo.digicore_banking_app.enums.ResponseCodes;
 import com.mrdiipo.digicore_banking_app.exception.AccountNotFoundException;
 import com.mrdiipo.digicore_banking_app.service.AccountInfoService;
+import com.mrdiipo.digicore_banking_app.service.AccountStatementService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -24,6 +26,9 @@ public class DigicoreController {
     @Autowired
     private AccountInfoService accountInfoService;
 
+    @Autowired
+    private AccountStatementService accountStatementService;
+
     /*Get Mappings*/
 
     @GetMapping(path = "/account_info/{accountNumber}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -35,8 +40,15 @@ public class DigicoreController {
     }
 
     @GetMapping(path = "/account_statement/{accountNumber}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public AccountStatementResponse getAccountStatement(@PathVariable ("accountNumber") String accountNumber) throws AccountNotFoundException{
-        return null;
+    public AccountStatementResponse getAccountStatement(@PathVariable ("accountNumber") String accountNumber, String password) throws AccountNotFoundException{
+
+        AccountStatementDto accountStatementDto = accountStatementService.getAccountStatement(accountNumber, password);
+
+        AccountStatementResponse accountStatementResponse = new AccountStatementResponse();
+
+        BeanUtils.copyProperties(accountStatementDto, accountStatementResponse);
+
+        return accountStatementResponse;
     }
 
     /*Post Mappings*/

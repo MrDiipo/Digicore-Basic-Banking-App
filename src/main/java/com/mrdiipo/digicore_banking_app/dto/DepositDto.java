@@ -6,14 +6,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public final class DepositDto {
 
+    private Date depositDate;
     private  String accountNumber;
     private  BigDecimal amount;
+    private BigDecimal balance;
 
     private  ResponseCodes responseCode;
     private  boolean success;

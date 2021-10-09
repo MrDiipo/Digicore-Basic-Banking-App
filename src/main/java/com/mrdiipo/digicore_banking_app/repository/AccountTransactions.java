@@ -1,10 +1,14 @@
 package com.mrdiipo.digicore_banking_app.repository;
 
+import com.mrdiipo.digicore_banking_app.dto.DepositDto;
 import com.mrdiipo.digicore_banking_app.dto.WithdrawalDto;
+
+import java.util.Date;
 
 public interface AccountTransactions {
 
-    void withdrawTransaction(WithdrawalDto withdrawalDto);
-    void depositTransaction(DepositDto depositDto);
+    WithdrawalDto withdrawTransaction();
+
+    DepositDto depositTransaction();
 
 }

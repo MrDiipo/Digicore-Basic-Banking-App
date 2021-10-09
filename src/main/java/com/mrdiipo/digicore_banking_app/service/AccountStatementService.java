@@ -7,6 +7,6 @@ import com.mrdiipo.digicore_banking_app.exception.IncorrectPasswordException;
 
 public interface AccountStatementService {
 
-    AccountStatementDto getAccountStatement(String accountNumber, String password, TransactionType transactionType) throws AccountNotFoundException, IncorrectPasswordException;
+    AccountStatementDto getAccountStatement(String accountNumber, String password) throws AccountNotFoundException, IncorrectPasswordException;
 
 }
