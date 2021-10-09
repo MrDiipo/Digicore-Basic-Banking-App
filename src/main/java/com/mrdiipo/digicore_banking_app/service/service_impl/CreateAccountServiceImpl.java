@@ -18,7 +18,7 @@ public class CreateAccountServiceImpl implements CreateAccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    private static final BigDecimal initialDeposit = new BigDecimal("500");
+    private  final BigDecimal initialDeposit = new BigDecimal("500");
 
     @Override
     public CreateAccountDto createAccount(CreateAccountDto createAccountDto) {
