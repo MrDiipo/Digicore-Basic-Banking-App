@@ -30,8 +30,8 @@ public class DigicoreController {
 
         AccountInfoResponse accountInfoResponse = new AccountInfoResponse(null, false, null, null);
 
-        AccountInfoDto accountInfoDto = accountInfoService.getAccountInfo(accountNumber, password);
-        BeanUtils.copyProperties(accountInfoDto, accountInfoResponse);
+        AccountDto accountDto = accountInfoService.getAccountInfo(accountNumber, password);
+        BeanUtils.copyProperties(accountDto, accountInfoResponse);
 
 
 
