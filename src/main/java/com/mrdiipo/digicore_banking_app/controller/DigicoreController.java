@@ -35,7 +35,7 @@ public class DigicoreController {
     }
 
     @GetMapping(path = "/account_statement/{accountNumber}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public AccountStatementResponse getAccountStatement(@PathVariable ("accountNumber") String accountNumber){
+    public AccountStatementResponse getAccountStatement(@PathVariable ("accountNumber") String accountNumber) throws AccountNotFoundException{
         return null;
     }
 
