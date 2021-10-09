@@ -4,6 +4,7 @@ import com.mrdiipo.digicore_banking_app.enums.ResponseCodes;
 import com.mrdiipo.digicore_banking_app.model.Account;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor

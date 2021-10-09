@@ -5,6 +5,9 @@ import com.mrdiipo.digicore_banking_app.controller.request.DepositRequest;
 import com.mrdiipo.digicore_banking_app.controller.request.LoginRequest;
 import com.mrdiipo.digicore_banking_app.controller.request.WithdrawalRequest;
 import com.mrdiipo.digicore_banking_app.controller.response.*;
+import com.mrdiipo.digicore_banking_app.dto.AccountInfoDto;
+import com.mrdiipo.digicore_banking_app.service.AccountInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +17,17 @@ import javax.servlet.http.HttpServletResponse;
 // Class containing endpoints for the application
 public class DigicoreController {
 
+    @Autowired
+    private AccountInfoService accountInfoService;
+
     /*Get Mappings*/
 
     @GetMapping(path = "/account_info/{accountNumber}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public AccountInfoResponse getAccountInfo(@PathVariable ("accountNumber") String accountNumber, HttpServletResponse httpServletResponse){
+
+        AccountInfoDto accountInfoDto = new AccountInfoDto();
+        accountInfoDto.
+
 
         return null;
     }
