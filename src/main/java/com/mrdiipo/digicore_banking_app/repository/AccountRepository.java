@@ -1,6 +1,7 @@
 package com.mrdiipo.digicore_banking_app.repository;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public interface AccountRepository {
     String findByAccountNum(String accountNumber);
@@ -10,4 +11,5 @@ public interface AccountRepository {
     BigDecimal getAccountBalance();
 
     String getAccountName();
+
 }
