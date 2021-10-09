@@ -27,13 +27,11 @@ public class DigicoreController {
     /*Get Mappings*/
 
     @GetMapping(path = "/account_info/{accountNumber}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public AccountInfoResponse getAccountInfo(@PathVariable ("accountNumber") String accountNumber, String password, HttpServletResponse httpServletResponse) throws AccountNotFoundException {
+    public AccountInfoResponse getAccountInfo(@PathVariable ("accountNumber") String accountNumber, String password) throws AccountNotFoundException {
 
         AccountDto accountDto = accountInfoService.getAccountInfo(accountNumber, password);
 
-        AccountInfoResponse accountInfoResponse = new AccountInfoResponse(ResponseCodes.SUCCESS, true, null, accountDto);
-
-        return accountInfoResponse;
+        return new AccountInfoResponse(ResponseCodes.SUCCESS, true, null, accountDto);
     }
 
     @GetMapping(path = "/account_statement/{accountNumber}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
