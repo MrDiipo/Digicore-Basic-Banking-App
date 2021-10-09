@@ -3,12 +3,14 @@ package com.mrdiipo.digicore_banking_app.dto;
 import com.mrdiipo.digicore_banking_app.enums.ResponseCodes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 // A model class for transferring withdrawal data between different layers of the application
 public final class WithdrawalDto {
 
