@@ -22,4 +22,5 @@ public final class DepositDto {
     private  ResponseCodes responseCode;
     private  boolean success;
     private  String message;
+
 }

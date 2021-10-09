@@ -8,10 +8,12 @@ import com.mrdiipo.digicore_banking_app.controller.response.*;
 import com.mrdiipo.digicore_banking_app.dto.AccountDto;
 import com.mrdiipo.digicore_banking_app.dto.AccountInfoDto;
 import com.mrdiipo.digicore_banking_app.dto.AccountStatementDto;
+import com.mrdiipo.digicore_banking_app.dto.DepositDto;
 import com.mrdiipo.digicore_banking_app.enums.ResponseCodes;
 import com.mrdiipo.digicore_banking_app.exception.AccountNotFoundException;
 import com.mrdiipo.digicore_banking_app.service.AccountInfoService;
 import com.mrdiipo.digicore_banking_app.service.AccountStatementService;
+import com.mrdiipo.digicore_banking_app.service.DepositService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -28,6 +30,9 @@ public class DigicoreController {
 
     @Autowired
     private AccountStatementService accountStatementService;
+
+    @Autowired
+    private DepositService depositService;
 
     /*Get Mappings*/
 
@@ -56,10 +61,15 @@ public class DigicoreController {
     @PostMapping(path = "/deposit",
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public DepositResponse deposit(@RequestBody DepositRequest depositRequest){
+    public DepositResponse deposit(@RequestBody DepositRequest depositRequest) throws AccountNotFoundException{
 
+        DepositResponse depositResponse = new DepositResponse();
 
-        return null;
+        DepositDto depositDto = depositService.depositAmount(depositRequest.getAmount(), depositRequest.getAccountNumber());
+
+        BeanUtils.copyProperties(depositDto, depositResponse);
+
+        return depositResponse;
     }
 
 
@@ -67,6 +77,8 @@ public class DigicoreController {
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public WithdrawalResponse withdrawal(@RequestBody WithdrawalRequest withdrawalRequest){
+
+        // TODO: Work on response codes on all endpoints
 
         return null;
     }
