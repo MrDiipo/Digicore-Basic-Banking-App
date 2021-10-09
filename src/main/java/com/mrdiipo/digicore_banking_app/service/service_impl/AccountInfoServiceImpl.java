@@ -10,14 +10,16 @@ import javax.security.auth.login.AccountNotFoundException;
 @Service
 public class AccountInfoServiceImpl implements AccountInfoService {
 
-
-    //private AccountRepository accountRepository;
+    /*@Autowired
+    private AccountRepository accountRepository ;
+    **/
 
     @Override
     public AccountInfoDto getAccountInfo(String accountNumber, String password) {
 
         /*
         if (accountRepository.findByAccountNum(accountNumber) == null) throw new AccountNotFoundException(accountNumber);
+
         * */
         return null;
     }

@@ -7,13 +7,13 @@ import com.mrdiipo.digicore_banking_app.controller.request.WithdrawalRequest;
 import com.mrdiipo.digicore_banking_app.controller.response.*;
 import com.mrdiipo.digicore_banking_app.dto.AccountDto;
 import com.mrdiipo.digicore_banking_app.dto.AccountInfoDto;
+import com.mrdiipo.digicore_banking_app.exception.AccountNotFoundException;
 import com.mrdiipo.digicore_banking_app.service.AccountInfoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.security.auth.login.AccountNotFoundException;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
