@@ -11,7 +11,7 @@ public interface AccountRepository {
 
     BigDecimal getAccountBalance();
 
-    void setAccountBalance();
+    void setAccountBalance(BigDecimal amount);
 
     String getAccountName();
 
